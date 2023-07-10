@@ -134,9 +134,8 @@ services:
 
   airflow-scheduler:
     <<: *airflow-common
-    command:
-      - bash -c "pip install --no-cache-dir -r /requirements.txt && airflow
-      - scheduler
+#    command: scheduler
+    command: bash -c "pip3 install --no-cache-dir -r ./requirements.txt && airflow scheduler"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8974/health"]
       interval: 30s
