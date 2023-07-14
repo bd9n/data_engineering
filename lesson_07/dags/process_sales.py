@@ -8,7 +8,7 @@ from operators.convert_to_avro_operator import ConvertToAvroOperator
 
 RAW_DIR = '/opt/airflow/data/raw/'
 STG_DIR = '/opt/airflow/data/stg/'
-GCS_DIR = '/src1/sales/v1/'
+GCS_DIR = 'src1/sales/v1/'
 
 default_args = {
     'start_date': '2022-08-09',
