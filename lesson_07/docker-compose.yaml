@@ -72,6 +72,7 @@ x-airflow-common:
     # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+    FAKE_API_TOKEN: 2b8d97ce57d401abd89f45b0079d8790edd940e6
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
@@ -135,7 +136,7 @@ services:
   airflow-scheduler:
     <<: *airflow-common
 #    command: scheduler
-    command: bash -c "pip3 install --no-cache-dir -r ./requirements.txt && airflow scheduler"
+    command: bash -c "pip install --no-cache-dir -r /requirements.txt && airflow scheduler"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8974/health"]
       interval: 30s
